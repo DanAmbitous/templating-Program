@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  background-color: moccasin;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#account-fields {
+  margin-bottom: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+  background-color: rgb(28, 72, 194, 0.8);
+  border-radius: 1vw;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  padding-top: 1vh;
+}
+
+#rules-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1vh;
+  border-top-right-radius: 1vw;
+  border-top-left-radius: 1vw;
+}
+
+input {
+  width: 50%;
+  font-size: 1.5vw;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 40em) {
+  input {
+    width: 80%;
+  }
+}
