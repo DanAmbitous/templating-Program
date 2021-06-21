@@ -18,8 +18,6 @@ router.get('/:username', async (req, res) => {
   try {
     const theMemberDocument = await Member.find({username: req.params.username}) 
 
-    console.log(theMemberDocument)
-
     if (theMemberDocument == null) {
       return res.json({message: `Can't find the member`})
     }
@@ -31,7 +29,7 @@ router.get('/:username', async (req, res) => {
 })
 
 //Create a new member
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
   const member = new Member({
     username: req.body.username,
     password: req.body.password
@@ -46,22 +44,26 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-//Update a specific member 
+// Update a specific member 
 router.patch('/:username', getMemberByUsername, async (req, res) => {
+  console.log(res.member[0].password)
+
   if (req.body.username != null) {
-    res.member.username = req.body.username
+    res.member[0].username = req.body.username
   }
 
   if (req.body.password != null) {
-    res.member.password = req.body.password
+    res.member[0].password = req.body.password
   }
 
-  try {
-    const updatedMember = await res.member.save()
+  console.log(res.member)
 
-    res.json(updatedMember)
+  try {
+    await res.member[0].save()
+
+    res.json(res.member)
   } catch (error) {
-    res.status(400).json({ message: error.message })
+    res.status(400).json(error)
   }
 })
 
@@ -93,19 +95,18 @@ async function getMemberByUsername(req, res, next) {
   let member
 
   try {
-    console.log(req.params.username)
-
     member = await Member.find({username: req.params.username})
-    
+      
+    console.log(member + 'asdf')
+
     if (member == null) {
       return res.status(404).json({ message: "Cannot find User" })
     }
-
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 
-  res.member = member;
+  res.member = member
   next()
 }
 
