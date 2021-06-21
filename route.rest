@@ -1,1 +1,32 @@
-GET http://localhost:2485/users
+GET http://localhost:2485/member
+
+###
+
+GET http://localhost:2485/member/Elon
+
+###
+
+POST http://localhost:2485/member
+Content-Type: application/json
+
+{
+  "username": "James",
+  "password": "password"
+}
+
+###
+
+PATCH http://localhost:2485/member/James
+Content-Type: application/json
+
+{
+  "username": "John"
+}
+
+###
+
+DELETE http://localhost:2485/member/James
+
+###
+
+DELETE http://localhost:2485/member
