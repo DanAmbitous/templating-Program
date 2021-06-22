@@ -1,17 +1,19 @@
 <div id="container">
   <div class="account-fields">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" class="username-input">
+    <input type="text" id="username" name="username">
+    <p class="username-message"></p>
     <label for="password">Password</label>
-    <input type="text" id="password" name="password" class="password-input">
-  
+    <input type="text" id="password" name="password">
+    <p class="password-message"></p>
     <button id="sign-up-button">Sign Up</button>
 
-    <div class="rules-container">
+    <div class="rules-container error-warning">
       <ul>
         <li>Username can't be less than 3 characters</li>
         <li>Username can't be more than 10 characters</li>
         <li>Username can't contain special characters</li>
+        <li>Password can't be less than 5 characters</li>
       </ul>
     </div>
   </div>

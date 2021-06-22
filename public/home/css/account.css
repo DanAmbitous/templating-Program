@@ -37,20 +37,6 @@ button {
   cursor: pointer;
 }
 
-#error-warning {
-  animation: invalidData 5s;
-}
-
-@keyframes invalidData {
-  0% {
-    background-color: white;
-  }
-
-  100% {
-    background-color: red;
-  }
-}
-
 @media screen and (max-width: 40em) {
   input {
     width: 80%;

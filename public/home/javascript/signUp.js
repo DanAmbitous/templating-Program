@@ -1,40 +1,40 @@
 let usernameInput
 let passwordInput
 
+document.querySelector('.rules-container').classList.add('error-warning')
+
 async function createMember() {
-  usernameInput = document.querySelector('.username-input').value
-  passwordInput = document.querySelector('.password-input').value
+  usernameInput = document.querySelector('#username').value
+  passwordInput = document.querySelector('#password').value
 
-  // credentialValidiation()
-  
-  console.log(usernameInput, passwordInput)
+  if (usernameInput.length < 3) {
+    document.querySelector('.username-message').textContent = "Username can't be less than 3 characters"
 
-  const data = {usernameInput, passwordInput}
+    document.querySelector('.password-message').textContent = ""
+  } else if (passwordInput.length < 5) {
+    document.querySelector('.password-message').textContent = "Password can't be less than 5 characters"
 
-  fetch('http://localhost:2485/member', {
-    method: 'post',
-    headers: {
-      'Content-Type':' application/json'
-    },
-    body: JSON.stringify({
-      username: data.usernameInput,
-      password: data.passwordInput
+    document.querySelector('.username-message').textContent = ""
+  } else {
+    document.querySelector('.username-message').textContent = ""
+    document.querySelector('.password-message').textContent = ""
+
+    const data = {usernameInput, passwordInput}
+
+    fetch('http://localhost:2485/member', {
+      method: 'post',
+      headers: {
+        'Content-Type':' application/json'
+      },
+      body: JSON.stringify({
+        username: data.usernameInput,
+        password: data.passwordInput
+      })
     })
-  })
-}
 
-function credentialValidiation() {
-  usernameInput = document.querySelector('#username')
-
-  if (true) {
-    console.log(usernameInput.length)
-
-    document.querySelector('.username-input').id = 'username error-warning'
+    window.location.href = "/"
   }
 }
-
-document.querySelector('.rules-container').id = 'error-warning'
-
 
 document.addEventListener('click', event => {
   switch (event.target.id) {
