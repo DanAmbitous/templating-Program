@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Member = require('../models/member.js')
+const bcrypt = require('bcrypt');
 
 //Get all members
 router.get('/', async (req, res) => {
@@ -30,15 +31,37 @@ router.get('/:username', async (req, res) => {
 
 //Create a new member
 router.post('/', async (req, res) => {
+  const saltRounds = 10;
+  const plainPassword = req.body.password
+  
   const member = new Member({
     username: req.body.username,
-    password: req.body.password
+    password:  req.body.password
   })
 
   try {
-    const newlyCreatedMember = await member.save()
+    bcrypt.genSalt(saltRounds, (error, salt) => {
+      // if (error) {
+      //   console.log(error)
+      // }
 
-    res.status(201).json(newlyCreatedMember)
+      bcrypt.hash(plainPassword, salt, async (error, hash) => {
+        // if (error) {
+        //   console.log(error)
+        // }
+
+        member.password = hash
+
+        console.log(member.password)
+
+        const newlyCreatedMember = await member.save()
+
+        res.status(201).json(newlyCreatedMember)
+      })
+    })
+  
+
+
   } catch (error) {
     res.status(400).json({message: error})
   }
