@@ -41,14 +41,14 @@ router.post('/', async (req, res) => {
 
   try {
     bcrypt.genSalt(saltRounds, (error, salt) => {
-      // if (error) {
-      //   console.log(error)
-      // }
+      if (error) {
+        console.log(error)
+      }
 
       bcrypt.hash(plainPassword, salt, async (error, hash) => {
-        // if (error) {
-        //   console.log(error)
-        // }
+        if (error) {
+          console.log(error)
+        }
 
         member.password = hash
 
