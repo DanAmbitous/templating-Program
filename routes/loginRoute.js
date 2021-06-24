@@ -5,6 +5,4 @@ router.get('/', (req, res) => {
   res.render('login', {title: "Login", buttonTitle: 'Login'})
 })
 
-
-
 module.exports = router

@@ -56,3 +56,13 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:2485/blog
+
+###
+
+# Home page 
+
+GET http://localhost:2485
+
+###
+
+GET http://localhost:2485/blog
