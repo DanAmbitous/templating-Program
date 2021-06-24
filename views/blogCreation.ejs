@@ -14,5 +14,20 @@
   <%- include('./partials/navigationBar.ejs') %>
 
   <h1><%- title %></h1>
+
+  <div class="blog-creator-container">
+    <label for="blog-title">Blog Title</label>
+    <br>
+
+    <input type="text" id="blog-title">
+    <br>
+    <label for="blog-content">Blog Content</label>
+    <br>
+
+    <textarea name="content" id="blog-content" cols="30" rows="10">
+    </textarea>
+    <br>
+    <button id="post-the-blog">Post the Blog</button>
+  </div>
 </body>
 </html>
