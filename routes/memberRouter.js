@@ -59,9 +59,6 @@ router.post('/', async (req, res) => {
         res.status(201).json(newlyCreatedMember)
       })
     })
-  
-
-
   } catch (error) {
     res.status(400).json({message: error})
   }

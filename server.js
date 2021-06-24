@@ -1,13 +1,8 @@
-require('dotenv').config()
-
 const result = require('dotenv').config()
 
 if (result.error) {
   throw result.error
 }
-
-//Show the url to the db
-console.log(result.parsed)
 
 const express = require('express')
 const app = express()
@@ -31,8 +26,6 @@ app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 
-// require('body-parser')
-
 // Routes [Start]
 
 const indexRoute = require('./routes/indexRoute')
@@ -41,8 +34,18 @@ app.use('/', indexRoute)
 const signUpRoute = require('./routes/signUpRoute')
 app.use('/signUp', signUpRoute)
 
+const loginRoute = require('./routes/loginRoute')
+app.use('/login', loginRoute)
+
+
 const memberRouter = require('./routes/memberRouter')
 app.use('/member', memberRouter)
+
+const blogRoute = require('./routes/blogRouter')
+app.use('/blog', blogRoute)
+
+const blogCreationRouter = require('./routes/blogCreationRouter')
+app.use('/blogCreation', blogCreationRouter)
 
 // Routes [End]
 

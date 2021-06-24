@@ -10,7 +10,7 @@ POST http://localhost:2485/member
 Content-Type: application/json
 
 {
-  "username": "Jaohan",
+  "username": "Jaohaan",
   "password": "password"
 }
 
@@ -31,3 +31,28 @@ DELETE http://localhost:2485/member/James
 ###
 
 DELETE http://localhost:2485/member
+
+###
+
+# BLog Routes
+
+GET http://localhost:2485/blog
+
+###
+
+GET http://localhost:2485/blog/LoQuea
+
+### 
+
+POST http://localhost:2485/blog
+Content-Type: application/json
+
+{
+  "title": "BookasdaaTiatle",
+  "author": "Author",
+  "content": "Hello"
+}
+
+###
+
+DELETE http://localhost:2485/blog

@@ -35,3 +35,11 @@ nav {
   padding: 1vh;
   background-color: hsla(224, 100%, 57%, 0.8);
 }
+
+.account-information {
+  display: inline;
+}
+
+button {
+  cursor: pointer;
+}
