@@ -15,20 +15,28 @@ async function createBlog() {
     }
   })
 
-  console.log(titleChecker)
-
   if (!titleChecker) {
-    const data = { title: blogTitle, author: 'The Author', content: blogContent, postedDate: todaysDate()  }
-
-    await fetch('http://localhost:2485/blog', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-
     document.querySelector('.user-blog-title-informer').textContent = ``
+
+    console.log(document.querySelector('#blog-content').value.length)
+
+    if (document.querySelector('#blog-content').value.length > 300) {
+      const data = { title: blogTitle, author: 'The Author', content: blogContent, postedDate: todaysDate()  }
+
+      await fetch('http://localhost:2485/blog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+      document.querySelector('.user-blog-content-informer').textContent = ``
+
+      window.location.href = "/"
+    } else {
+      document.querySelector('.user-blog-content-informer').textContent = `Your blog needs at least ${300 - Number(document.querySelector('#blog-content').value.length)} characters more`
+    }
   } else {
     document.querySelector('.user-blog-title-informer').textContent = `The title of ${blogTitle} already exists`
   }

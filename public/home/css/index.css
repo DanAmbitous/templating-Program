@@ -44,6 +44,6 @@ button {
   cursor: pointer;
 }
 
-.user-blog-title-informer {
+.user-blog-title-informer, .user-blog-content-informer {
   color: red;
 }
