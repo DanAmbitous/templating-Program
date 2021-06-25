@@ -62,3 +62,18 @@ document.addEventListener('click', event => {
       break
   }
 })
+
+document.addEventListener('keyup', event => {
+  switch (event.target.id) {
+    case "blog-content":
+      amountOfRequiredCharacters()
+      break
+  }
+})
+
+function amountOfRequiredCharacters() {
+  let amountOfCharacters = document.querySelector('#blog-content').value.length
+
+ 
+  document.querySelector('.amount-of-characters-required-left').innerHTML = Math.abs(amountOfCharacters - 300)
+}
