@@ -43,3 +43,7 @@ nav {
 button {
   cursor: pointer;
 }
+
+.user-blog-title-informer {
+  color: red;
+}

@@ -2,15 +2,36 @@ async function createBlog() {
   const blogTitle = document.querySelector('#blog-title').value
   const blogContent = document.querySelector('#blog-content').value
 
-  const data = { title: blogTitle, author: 'The Author', content: blogContent, postedDate: todaysDate()  }
+  const fetchingData = await fetch('http://localhost:2485/blog') 
+  const blogsData = await fetchingData.json()
 
-  await fetch('http://localhost:2485/blog', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+  let titleChecker = false
+
+  blogsData.forEach(blog => {
+    if (blog.title.includes(blogTitle)) {
+      titleChecker = true
+    } else {
+      titleChecker = false
+    }
   })
+
+  console.log(titleChecker)
+
+  if (!titleChecker) {
+    const data = { title: blogTitle, author: 'The Author', content: blogContent, postedDate: todaysDate()  }
+
+    await fetch('http://localhost:2485/blog', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+
+    document.querySelector('.user-blog-title-informer').textContent = ``
+  } else {
+    document.querySelector('.user-blog-title-informer').textContent = `The title of ${blogTitle} already exists`
+  }
 }
 
 function todaysDate() {

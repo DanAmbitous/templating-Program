@@ -48,7 +48,7 @@ POST http://localhost:2485/blog
 Content-Type: application/json
 
 {
-  "title": "BookasdaaTiatle",
+  "title": "a",
   "author": "Author",
   "content": "Hello"
 }
