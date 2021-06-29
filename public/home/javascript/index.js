@@ -1,5 +1,17 @@
 const blogsContainer=  document.querySelector('.blogs-container')
 
+async function fetchingMember() {
+  const responseFlow = await fetch('http://localhost:2485/member')
+  const memberData = await responseFlow.json()
+
+  theMember = memberData[memberData.length - 1]
+
+  document.querySelector('.header-links-account').innerHTML = `${theMember.username}`
+
+}
+
+fetchingMember()
+
 async function fetchingBlogs() {
   const responseFlow = await fetch('http://localhost:2485/blog')
   const blogData = await responseFlow.json()

@@ -10,7 +10,7 @@ POST http://localhost:2485/member
 Content-Type: application/json
 
 {
-  "username": "Jaohaan",
+  "username": "Ben",
   "password": "password"
 }
 

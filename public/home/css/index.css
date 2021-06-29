@@ -2,7 +2,6 @@ body {
   background-color: moccasin;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-
 }
 
 nav {
@@ -46,4 +45,24 @@ button {
 
 .user-blog-title-informer, .user-blog-content-informer {
   color: red;
+}
+
+.header-links .header-links-account {
+  align-self: center;
+}
+
+.blogs-container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blogs-container li {
+  background-color: white;
+  padding: 1vh;
+  margin-bottom: 1vh;
+  word-wrap: break-word;
+}
+
+.blogs-container li:hover {
+  cursor: pointer;
 }

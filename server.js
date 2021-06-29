@@ -47,6 +47,9 @@ app.use('/blog', blogRoute)
 const blogCreationRouter = require('./routes/blogCreationRouter')
 app.use('/blogCreation', blogCreationRouter)
 
+const accountRouter = require('./routes/account')
+app.use('/account', accountRouter)
+
 // Routes [End]
 
 app.listen(PORT, () => console.log(`Running server on port ${PORT}`))
